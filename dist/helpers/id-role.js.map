@@ -1,0 +1,1 @@
+{"version":3,"file":"id-role.js","sourceRoot":"","sources":["../../src/helpers/id-role.ts"],"names":[],"mappings":";;;;;;;;;;;;AACA,sCAAgC;AAEzB,MAAM,MAAM,GAAC,CAAM,OAAY,MAAM,EAAC,EAAE;IAC3C,MAAM,MAAM,GAAE,MAAM,aAAI,CAAC,OAAO,CAAC,EAAC,KAAK,EAAC,EAAC,IAAI,EAAC,EAAC,CAAC,CAAC;IACjD,OAAO,MAAM,aAAN,MAAM,uBAAN,MAAM,CAAE,EAAE,CAAC;AACtB,CAAC,CAAA,CAAA;AAHY,QAAA,MAAM,UAGlB"}
