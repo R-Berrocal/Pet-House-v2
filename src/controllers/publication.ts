@@ -83,7 +83,7 @@ export const getPublications= async(req:Request,res:Response)=>{
                     model:Animal_type
                 },
                 {
-                    attributes:['name1','name2','last_name1','last_name2','img'],
+                    attributes:['name1','name2','last_name1','last_name2','img',"id"],
                     model:User
                 },
                 {

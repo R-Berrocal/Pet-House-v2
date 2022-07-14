@@ -94,7 +94,7 @@ const getPublications = (req, res) => __awaiter(void 0, void 0, void 0, function
                     model: models_1.Animal_type
                 },
                 {
-                    attributes: ['name1', 'name2', 'last_name1', 'last_name2', 'img'],
+                    attributes: ['name1', 'name2', 'last_name1', 'last_name2', 'img', "id"],
                     model: models_1.User
                 },
                 {
