@@ -284,7 +284,8 @@ export const cancelAdoption = async(req:Request,res:Response)=>{
     const { publicationId } = req.params;
     const publicationAdopt = await Publication.findByPk(publicationId);
     
-    publicationAdopt!.update({ isAdopt: false,condition:true });
+    //@ts-ignore
+    publicationAdopt!.update({ isAdopt: null,condition:true });
     
     res.json({
         publicationAdopt,
