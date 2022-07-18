@@ -39,14 +39,14 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const role = yield (0, id_model_1.idRole)(body.role);
         const array = (_a = req.files) === null || _a === void 0 ? void 0 : _a.img;
         const user = models_1.User.build(Object.assign({ id: (0, uuid_1.v4)(), role_id: role }, body));
-        //encriptar contraseña 
+        //encriptar contraseña
         const salt = bcryptjs_1.default.genSaltSync();
         user.password = bcryptjs_1.default.hashSync(body.password, salt);
         //subida de archivos
         if (array) {
             const { tempFilePath } = array;
             const { secure_url } = yield cloudinary.uploader.upload(tempFilePath, {
-                folder: 'Users'
+                folder: "Users",
             });
             user.img = secure_url;
         }
@@ -55,13 +55,13 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const token = yield (0, generate_jwt_1.generateJWT)(user.id);
         return res.status(201).json({
             user,
-            token
+            token,
         });
     }
     catch (error) {
         console.log(error);
         return res.status(500).json({
-            msg: "hable con el administrador"
+            msg: "hable con el administrador",
         });
     }
 });
@@ -71,24 +71,23 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield models_1.User.findAll({
             where: {
-                condition: true
+                condition: true,
             },
             include: {
-                attributes: ['role'],
-                model: models_1.Role
+                model: models_1.Role,
             },
             offset: parseInt(offset),
-            limit: parseInt(limit)
+            limit: parseInt(limit),
         });
         res.json({
             count: users.length,
-            users
+            users,
         });
     }
     catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Talk with admin`
+            msg: `Talk with admin`,
         });
     }
 });
@@ -99,23 +98,22 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield models_1.User.findOne({
             where: { id: userId },
             include: {
-                attributes: ['role'],
-                model: models_1.Role
-            }
+                model: models_1.Role,
+            },
         });
         if (!user) {
             return res.status(400).json({
-                msg: `id user not exist in db`
+                msg: `id user not exist in db`,
             });
         }
         res.json({
-            user
+            user,
         });
     }
     catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Talk with admin`
+            msg: `Talk with admin`,
         });
     }
 });
@@ -145,19 +143,19 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             }
             const { tempFilePath } = array;
             const { secure_url } = yield cloudinary.uploader.upload(tempFilePath, {
-                folder: "Users"
+                folder: "Users",
             });
             resto.img = secure_url;
         }
         yield user.update(resto);
         res.json({
-            user
+            user,
         });
     }
     catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Talk with admin`
+            msg: `Talk with admin`,
         });
     }
 });
@@ -168,13 +166,13 @@ const deletUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield models_1.User.findByPk(userId);
         user.update({ condition: false });
         res.json({
-            user
+            user,
         });
     }
     catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Talk with admin`
+            msg: `Talk with admin`,
         });
     }
 });

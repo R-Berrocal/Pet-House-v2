@@ -289,7 +289,8 @@ exports.confirmAdoption = confirmAdoption;
 const cancelAdoption = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { publicationId } = req.params;
     const publicationAdopt = yield models_1.Publication.findByPk(publicationId);
-    publicationAdopt.update({ isAdopt: false, condition: true });
+    //@ts-ignore
+    publicationAdopt.update({ isAdopt: null, condition: true });
     res.json({
         publicationAdopt,
     });
