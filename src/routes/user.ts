@@ -16,7 +16,6 @@ router.get('/',[
 
 router.get('/:userId',[
     validateJWT,
-    isAdminRole
 ],getUser);
 
 router.post('/',[

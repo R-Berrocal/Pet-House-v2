@@ -14,7 +14,6 @@ router.get('/', [
 ], user_1.getUsers);
 router.get('/:userId', [
     validate_jwt_1.validateJWT,
-    validate_role_1.isAdminRole
 ], user_1.getUser);
 router.post('/', [
     (0, express_validator_1.check)('name1', 'name1 is required').not().isEmpty(),

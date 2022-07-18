@@ -94,7 +94,7 @@ const getPublications = (req, res) => __awaiter(void 0, void 0, void 0, function
                     model: models_1.Animal_type
                 },
                 {
-                    attributes: ['name1', 'name2', 'last_name1', 'last_name2', 'img'],
+                    attributes: ['name1', 'name2', 'last_name1', 'last_name2', 'img', "id"],
                     model: models_1.User
                 },
                 {
@@ -289,7 +289,8 @@ exports.confirmAdoption = confirmAdoption;
 const cancelAdoption = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { publicationId } = req.params;
     const publicationAdopt = yield models_1.Publication.findByPk(publicationId);
-    publicationAdopt.update({ isAdopt: false, condition: true });
+    //@ts-ignore
+    publicationAdopt.update({ isAdopt: null, condition: true });
     res.json({
         publicationAdopt,
     });
